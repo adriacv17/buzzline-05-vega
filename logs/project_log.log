@@ -1197,3 +1197,177 @@
 2025-02-05 09:45:25.277 | ERROR    | __main__:consume_messages_from_kafka:148 - ERROR: Could not consume messages from Kafka: Invalid file descriptor: -1
 2025-02-05 09:45:25.277 | ERROR    | __main__:main:203 - Unexpected error: Invalid file descriptor: -1
 2025-02-05 09:45:25.278 | INFO     | __main__:main:205 - Consumer shutting down.
+2025-02-09 01:55:57.139 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 01:55:57.140 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-09 01:55:57.140 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-09 01:55:57.140 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-09 01:55:57.140 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-09 01:55:57.141 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 01:55:57.141 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-09 01:55:57.141 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-09 01:55:57.141 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\adria\Projects\buzzline-05-vega\data
+2025-02-09 01:55:57.141 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\adria\Projects\buzzline-05-vega\data\project_live.json
+2025-02-09 01:55:57.141 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-09 01:55:57.142 | INFO     | __main__:main:145 - Deleted existing live data file.
+2025-02-09 01:55:57.142 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-09 01:55:57.142 | INFO     | __main__:main:153 - STEP 4. Try to create a Kafka producer and topic.
+2025-02-09 01:55:57.143 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-09 01:55:59.204 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-09 01:55:59.205 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
+2025-02-09 01:56:45.161 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 01:56:45.162 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-09 01:56:45.162 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-09 01:56:45.162 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-09 01:56:45.162 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-09 01:56:45.162 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 01:56:45.162 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-09 01:56:45.163 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: localhost:9092
+2025-02-09 01:56:45.163 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\adria\Projects\buzzline-05-vega\data
+2025-02-09 01:56:45.163 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\adria\Projects\buzzline-05-vega\data\project_live.json
+2025-02-09 01:56:45.163 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-09 01:56:45.163 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-09 01:56:45.164 | INFO     | __main__:main:153 - STEP 4. Try to create a Kafka producer and topic.
+2025-02-09 01:56:45.164 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: localhost:2181
+2025-02-09 01:56:45.169 | INFO     | utils.utils_producer:check_zookeeper_service_is_ready:47 - Zookeeper is ready at localhost:2181.
+2025-02-09 01:56:45.169 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: localhost:9092
+2025-02-09 01:56:45.498 | INFO     | utils.utils_producer:check_kafka_service_is_ready:66 - Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1001, 'host': 'localhost', 'port': 9092, 'rack': None}], 'cluster_id': 'BzA5fmCJTUaiS9a1w4v2NA', 'controller_id': 1001}
+2025-02-09 01:56:45.608 | INFO     | __main__:main:162 - Kafka producer connected to localhost:9092
+2025-02-09 01:56:45.609 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: localhost:9092
+2025-02-09 01:56:45.926 | INFO     | utils.utils_producer:create_kafka_topic:154 - Creating 'buzzline'.
+2025-02-09 01:56:46.076 | INFO     | utils.utils_producer:create_kafka_topic:159 - Topic 'buzzline' created successfully.
+2025-02-09 01:56:46.077 | INFO     | __main__:main:170 - Kafka topic 'buzzline' is ready.
+2025-02-09 01:56:46.077 | INFO     | __main__:main:175 - STEP 5. Generate messages continuously.
+2025-02-09 01:56:46.077 | INFO     | __main__:main:178 - {'message': 'I just found JavaScript! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:56:46', 'category': 'tech', 'sentiment': 0.93, 'keyword_mentioned': 'JavaScript', 'message_length': 38}
+2025-02-09 01:56:46.078 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just found JavaScript! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:56:46', 'category': 'tech', 'sentiment': 0.93, 'keyword_mentioned': 'JavaScript', 'message_length': 38}
+2025-02-09 01:56:46.149 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just found JavaScript! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:56:46', 'category': 'tech', 'sentiment': 0.93, 'keyword_mentioned': 'JavaScript', 'message_length': 38}
+2025-02-09 01:56:51.151 | INFO     | __main__:main:178 - {'message': 'I just tried a movie! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-09 01:56:51', 'category': 'entertainment', 'sentiment': 0.5, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-09 01:56:51.152 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just tried a movie! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-09 01:56:51', 'category': 'entertainment', 'sentiment': 0.5, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-09 01:56:51.154 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just tried a movie! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-09 01:56:51', 'category': 'entertainment', 'sentiment': 0.5, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-09 01:56:56.154 | INFO     | __main__:main:178 - {'message': 'I just loved an app! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:56:56', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-09 01:56:56.157 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just loved an app! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:56:56', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-09 01:56:56.160 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just loved an app! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:56:56', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-09 01:57:01.162 | INFO     | __main__:main:178 - {'message': 'I just found an app! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-09 01:57:01', 'category': 'other', 'sentiment': 0.25, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-09 01:57:01.163 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just found an app! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-09 01:57:01', 'category': 'other', 'sentiment': 0.25, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-09 01:57:01.165 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just found an app! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-09 01:57:01', 'category': 'other', 'sentiment': 0.25, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-09 01:57:06.167 | INFO     | __main__:main:178 - {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:06', 'category': 'tech', 'sentiment': 0.79, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-09 01:57:06.169 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:06', 'category': 'tech', 'sentiment': 0.79, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-09 01:57:06.170 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:06', 'category': 'tech', 'sentiment': 0.79, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-09 01:57:10.123 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 01:57:10.128 | INFO     | __main__:main:167 - Starting Consumer to run continuously.
+2025-02-09 01:57:10.129 | INFO     | __main__:main:168 - Things can fail or get interrupted, so use a try block.
+2025-02-09 01:57:10.129 | INFO     | __main__:main:169 - Moved .env variables into a utils config module.
+2025-02-09 01:57:10.129 | INFO     | __main__:main:171 - STEP 1. Read environment variables using new config functions.
+2025-02-09 01:57:10.129 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-09 01:57:10.129 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: localhost:9092
+2025-02-09 01:57:10.130 | INFO     | utils.utils_config:get_kafka_consumer_group_id:72 - BUZZ_CONSUMER_GROUP_ID: buzz_group
+2025-02-09 01:57:10.130 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 01:57:10.130 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\adria\Projects\buzzline-05-vega\data
+2025-02-09 01:57:10.130 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\adria\Projects\buzzline-05-vega\data\buzz.sqlite
+2025-02-09 01:57:10.131 | INFO     | __main__:main:178 - SUCCESS: Read environment variables.
+2025-02-09 01:57:10.131 | INFO     | __main__:main:183 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-09 01:57:10.131 | INFO     | __main__:main:187 - SUCCESS: Deleted database file.
+2025-02-09 01:57:10.131 | INFO     | __main__:main:192 - STEP 3. Initialize a new database with an empty table.
+2025-02-09 01:57:10.131 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 01:57:10.132 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 01:57:10.136 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\adria\Projects\buzzline-05-vega\data\buzz.sqlite.
+2025-02-09 01:57:10.136 | INFO     | __main__:main:199 - STEP 4. Begin consuming and storing messages.
+2025-02-09 01:57:10.136 | INFO     | __main__:consume_messages_from_kafka:100 - Called consume_messages_from_kafka() with:
+2025-02-09 01:57:10.137 | INFO     | __main__:consume_messages_from_kafka:101 -    topic='buzzline'
+2025-02-09 01:57:10.137 | INFO     | __main__:consume_messages_from_kafka:102 -    kafka_url='localhost:9092'
+2025-02-09 01:57:10.137 | INFO     | __main__:consume_messages_from_kafka:103 -    group='buzz_group'
+2025-02-09 01:57:10.137 | INFO     | __main__:consume_messages_from_kafka:104 -    sql_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:10.137 | INFO     | __main__:consume_messages_from_kafka:105 -    interval_secs=5
+2025-02-09 01:57:10.137 | INFO     | __main__:consume_messages_from_kafka:107 - Step 1. Verify Kafka Services.
+2025-02-09 01:57:10.138 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: localhost:2181
+2025-02-09 01:57:10.143 | INFO     | utils.utils_producer:check_zookeeper_service_is_ready:47 - Zookeeper is ready at localhost:2181.
+2025-02-09 01:57:10.143 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: localhost:9092
+2025-02-09 01:57:10.461 | INFO     | utils.utils_producer:check_kafka_service_is_ready:66 - Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1001, 'host': 'localhost', 'port': 9092, 'rack': None}], 'cluster_id': 'BzA5fmCJTUaiS9a1w4v2NA', 'controller_id': 1001}
+2025-02-09 01:57:10.462 | INFO     | __main__:consume_messages_from_kafka:114 - Step 2. Create a Kafka consumer.
+2025-02-09 01:57:10.462 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: localhost:9092
+2025-02-09 01:57:10.463 | INFO     | utils.utils_consumer:create_kafka_consumer:44 - Creating Kafka consumer. Topic='buzzline' and group ID='buzz_group'.
+2025-02-09 01:57:10.568 | INFO     | utils.utils_consumer:create_kafka_consumer:59 - Kafka consumer created successfully.
+2025-02-09 01:57:10.569 | INFO     | __main__:consume_messages_from_kafka:125 - Step 3. Verify topic exists.
+2025-02-09 01:57:10.570 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: localhost:9092
+2025-02-09 01:57:10.888 | INFO     | utils.utils_producer:is_topic_available:252 - Topic 'buzzline' already exists. 
+2025-02-09 01:57:10.889 | INFO     | __main__:consume_messages_from_kafka:129 - Kafka topic 'buzzline' is ready.
+2025-02-09 01:57:10.889 | INFO     | __main__:consume_messages_from_kafka:136 - Step 4. Process messages.
+2025-02-09 01:57:11.172 | INFO     | __main__:main:178 - {'message': 'I just found recipe! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:11', 'category': 'food', 'sentiment': 0.52, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-09 01:57:11.172 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just found recipe! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:11', 'category': 'food', 'sentiment': 0.52, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-09 01:57:11.173 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just found recipe! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:11', 'category': 'food', 'sentiment': 0.52, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-09 01:57:11.494 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:11.495 | INFO     | __main__:process_message:59 -    message={'message': 'I just found JavaScript! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:56:46', 'category': 'tech', 'sentiment': 0.93, 'keyword_mentioned': 'JavaScript', 'message_length': 38}
+2025-02-09 01:57:11.495 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just found JavaScript! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:56:46', 'category': 'tech', 'sentiment': 0.93, 'keyword_mentioned': 'JavaScript', 'message_length': 38}
+2025-02-09 01:57:11.495 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:11.496 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just found JavaScript! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:56:46', 'category': 'tech', 'sentiment': 0.93, 'keyword_mentioned': 'JavaScript', 'message_length': 38}
+2025-02-09 01:57:11.496 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:11.499 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:11.499 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:11.499 | INFO     | __main__:process_message:59 -    message={'message': 'I just tried a movie! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-09 01:56:51', 'category': 'entertainment', 'sentiment': 0.5, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-09 01:57:11.500 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just tried a movie! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-09 01:56:51', 'category': 'entertainment', 'sentiment': 0.5, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-09 01:57:11.500 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:11.500 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just tried a movie! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-09 01:56:51', 'category': 'entertainment', 'sentiment': 0.5, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-09 01:57:11.500 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:11.505 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:11.506 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:11.506 | INFO     | __main__:process_message:59 -    message={'message': 'I just loved an app! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:56:56', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-09 01:57:11.506 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just loved an app! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:56:56', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-09 01:57:11.507 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:11.507 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just loved an app! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:56:56', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-09 01:57:11.507 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:11.510 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:11.511 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:11.511 | INFO     | __main__:process_message:59 -    message={'message': 'I just found an app! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-09 01:57:01', 'category': 'other', 'sentiment': 0.25, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-09 01:57:11.511 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just found an app! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-09 01:57:01', 'category': 'other', 'sentiment': 0.25, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-09 01:57:11.511 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:11.511 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just found an app! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-09 01:57:01', 'category': 'other', 'sentiment': 0.25, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-09 01:57:11.512 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:11.514 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:11.515 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:11.515 | INFO     | __main__:process_message:59 -    message={'message': 'I just loved JavaScript! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:06', 'category': 'tech', 'sentiment': 0.79, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-09 01:57:11.515 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:06', 'category': 'tech', 'sentiment': 0.79, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-09 01:57:11.515 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:11.516 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just loved JavaScript! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:06', 'category': 'tech', 'sentiment': 0.79, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-09 01:57:11.516 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:11.519 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:11.521 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:11.521 | INFO     | __main__:process_message:59 -    message={'message': 'I just found recipe! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:11', 'category': 'food', 'sentiment': 0.52, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-09 01:57:11.521 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just found recipe! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:11', 'category': 'food', 'sentiment': 0.52, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-09 01:57:11.522 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:11.522 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just found recipe! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-09 01:57:11', 'category': 'food', 'sentiment': 0.52, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-09 01:57:11.522 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:11.525 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:16.175 | INFO     | __main__:main:178 - {'message': 'I just tried a movie! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:16', 'category': 'entertainment', 'sentiment': 0.78, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-09 01:57:16.176 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just tried a movie! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:16', 'category': 'entertainment', 'sentiment': 0.78, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-09 01:57:16.177 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just tried a movie! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:16', 'category': 'entertainment', 'sentiment': 0.78, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-09 01:57:16.180 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:16.181 | INFO     | __main__:process_message:59 -    message={'message': 'I just tried a movie! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:16', 'category': 'entertainment', 'sentiment': 0.78, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-09 01:57:16.181 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just tried a movie! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:16', 'category': 'entertainment', 'sentiment': 0.78, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-09 01:57:16.181 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:16.181 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just tried a movie! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:16', 'category': 'entertainment', 'sentiment': 0.78, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-09 01:57:16.182 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:16.187 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:21.178 | INFO     | __main__:main:178 - {'message': 'I just saw a story! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:21', 'category': 'other', 'sentiment': 0.44, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-09 01:57:21.179 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just saw a story! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:21', 'category': 'other', 'sentiment': 0.44, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-09 01:57:21.181 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just saw a story! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:21', 'category': 'other', 'sentiment': 0.44, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-09 01:57:21.184 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:21.185 | INFO     | __main__:process_message:59 -    message={'message': 'I just saw a story! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:21', 'category': 'other', 'sentiment': 0.44, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-09 01:57:21.185 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just saw a story! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:21', 'category': 'other', 'sentiment': 0.44, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-09 01:57:21.185 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:21.186 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just saw a story! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-09 01:57:21', 'category': 'other', 'sentiment': 0.44, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-09 01:57:21.186 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:21.192 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:26.182 | INFO     | __main__:main:178 - {'message': 'I just shared an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-09 01:57:26', 'category': 'other', 'sentiment': 0.94, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-09 01:57:26.182 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just shared an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-09 01:57:26', 'category': 'other', 'sentiment': 0.94, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-09 01:57:26.183 | INFO     | __main__:main:187 - STEP 4b Sent message to Kafka topic 'buzzline': {'message': 'I just shared an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-09 01:57:26', 'category': 'other', 'sentiment': 0.94, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-09 01:57:26.187 | INFO     | __main__:process_message:58 - Called process_message() with:
+2025-02-09 01:57:26.188 | INFO     | __main__:process_message:59 -    message={'message': 'I just shared an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-09 01:57:26', 'category': 'other', 'sentiment': 0.94, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-09 01:57:26.188 | INFO     | __main__:process_message:70 - Processed message: {'message': 'I just shared an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-09 01:57:26', 'category': 'other', 'sentiment': 0.94, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-09 01:57:26.188 | INFO     | consumers.db_sqlite_case:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-09 01:57:26.188 | INFO     | consumers.db_sqlite_case:insert_message:93 - message={'message': 'I just shared an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-09 01:57:26', 'category': 'other', 'sentiment': 0.94, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-09 01:57:26.189 | INFO     | consumers.db_sqlite_case:insert_message:94 - db_path=WindowsPath('C:/Users/adria/Projects/buzzline-05-vega/data/buzz.sqlite')
+2025-02-09 01:57:26.191 | INFO     | consumers.db_sqlite_case:insert_message:117 - Inserted one message into the database.
+2025-02-09 01:57:27.159 | WARNING  | __main__:main:205 - Consumer interrupted by user.
+2025-02-09 01:57:27.160 | INFO     | __main__:main:209 - Consumer shutting down.
+2025-02-09 01:57:28.121 | WARNING  | __main__:main:192 - WARNING: Producer interrupted by user.
+2025-02-09 01:57:28.122 | INFO     | __main__:main:198 - Kafka producer closed.
+2025-02-09 01:57:28.123 | INFO     | __main__:main:199 - TRY/FINALLY: Producer shutting down.
