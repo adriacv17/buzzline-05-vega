@@ -28,8 +28,8 @@ import json
 import os
 import pathlib
 import sys
-
-# import external modules
+import matplotlib.pyplot as plt
+import pandas as pd
 from kafka import KafkaConsumer
 
 # import from local modules
@@ -37,33 +37,39 @@ import utils.utils_config as config
 from utils.utils_consumer import create_kafka_consumer
 from utils.utils_logger import logger
 from utils.utils_producer import verify_services, is_topic_available
+from consumers.db_sqlite_case import init_db, insert_message, insert_high_sentiment_message, get_high_sentiment_data
 
 # Ensure the parent directory is in sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from consumers.db_sqlite_case import init_db, insert_message
+
+# Constants for sentiment threshold
+HIGH_SENTIMENT_THRESHOLD = 0.75
 
 #####################################
 # Function to process a single message
-# #####################################
-
+#####################################
 
 def process_message(message: dict) -> None:
     """
     Process and transform a single JSON message.
     Converts message fields to appropriate data types.
 
-    Args:
-        message (dict): The JSON message as a Python dictionary.
     """
     logger.info("Called process_message() with:")
     logger.info(f"   {message=}")
     try:
+        sentiment = float(message.get("sentiment", 0.0))
+        if sentiment >= HIGH_SENTIMENT_THRESHOLD:
+            # Save high-sentiment messages separately
+            logger.info(f"High sentiment message: {message}")
+            insert_high_sentiment_message(message)  # Insert high sentiment message to database
+        
         processed_message = {
             "message": message.get("message"),
             "author": message.get("author"),
             "timestamp": message.get("timestamp"),
             "category": message.get("category"),
-            "sentiment": float(message.get("sentiment", 0.0)),
+            "sentiment": sentiment,
             "keyword_mentioned": message.get("keyword_mentioned"),
             "message_length": int(message.get("message_length", 0)),
         }
@@ -89,13 +95,7 @@ def consume_messages_from_kafka(
     """
     Consume new messages from Kafka topic and process them.
     Each message is expected to be JSON-formatted.
-
-    Args:
-    - topic (str): Kafka topic to consume messages from.
-    - kafka_url (str): Kafka broker address.
-    - group (str): Consumer group ID for Kafka.
-    - sql_path (pathlib.Path): Path to the SQLite database file.
-    - interval_secs (int): Interval between reads from the file.
+    
     """
     logger.info("Called consume_messages_from_kafka() with:")
     logger.info(f"   {topic=}")
@@ -140,9 +140,7 @@ def consume_messages_from_kafka(
         sys.exit(13)
 
     try:
-        # consumer is a KafkaConsumer
-        # message is a kafka.consumer.fetcher.ConsumerRecord
-        # message.value is a Python dictionary
+        # Consume messages and process them
         for message in consumer:
             processed_message = process_message(message.value)
             if processed_message:
