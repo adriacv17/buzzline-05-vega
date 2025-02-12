@@ -150,6 +150,42 @@ def consume_messages_from_kafka(
         logger.error(f"ERROR: Could not consume messages from Kafka: {e}")
         raise
 
+#####################################
+# Visualize Sentiment Trends
+#####################################
+
+def visualize_sentiment(sqlite_path: pathlib.Path):
+    """
+    Using Matplotlib visualize high sentiment trends over time.
+    """
+    # High sentiment data from the database
+    high_sentiment_data = get_high_sentiment_data(sqlite_path)
+    
+    if not high_sentiment_data:
+        logger.warning("No high sentiment data found.")
+        return
+
+    # Convert data into a pandas DataFrame
+    df = pd.DataFrame(high_sentiment_data, columns=["timestamp", "sentiment"])
+
+    # Convert 'timestamp' to datetime
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+
+    # Aggregate sentiment by day
+    df["date"] = df["timestamp"].dt.date
+    aggregated_data = df.groupby("date")["sentiment"].mean().reset_index()
+
+    # Plot the data
+    plt.figure(figsize=(10, 8))
+    plt.plot(aggregated_data["date"], aggregated_data["sentiment"], marker="D", color="g", label="Avg Sentiment")
+    plt.title('High Sentiment Trend Over Time')
+    plt.xlabel('Date')
+    plt.ylabel('Average Sentiment')
+    plt.xticks(rotation=45)
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
 
 #####################################
 # Define Main Function
@@ -206,6 +242,8 @@ def main():
     finally:
         logger.info("Consumer shutting down.")
 
+    # visualize the sentiment trends
+    visualize_sentiment(sqlite_path)
 
 #####################################
 # Conditional Execution
