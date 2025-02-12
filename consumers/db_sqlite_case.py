@@ -120,6 +120,86 @@ def insert_message(message: dict, db_path: pathlib.Path) -> None:
 
 
 #####################################
+# Define Function to Insert High Sentiment Messages into the Database
+#####################################
+
+def insert_high_sentiment_message(message: dict, db_path: pathlib.Path) -> None:
+    """
+    Insert a high sentiment message into the database.
+
+    Args:
+    - message (dict): The high-sentiment message to insert.
+    - db_path (pathlib.Path): Path to the SQLite database file.
+    """
+    logger.info("Inserting high sentiment message into the database.")
+    timestamp = message.get('timestamp')
+    sentiment = message.get('sentiment')
+    message_text = message.get('message')
+
+    # Check if the sentiment is above the threshold
+    HIGH_SENTIMENT_THRESHOLD = 0.8  # Define the threshold for high sentiment
+    if sentiment >= HIGH_SENTIMENT_THRESHOLD:
+        try:
+            with sqlite3.connect(str(db_path)) as conn:
+                cursor = conn.cursor()
+                cursor.execute(
+                    """
+                    INSERT INTO streamed_messages (timestamp, sentiment, message)
+                    VALUES (?, ?, ?)
+                    """, (timestamp, sentiment, message_text)
+                )
+                conn.commit()
+            logger.info(f"Successfully inserted high sentiment message: {message_text}")
+        except Exception as e:
+            logger.error(f"ERROR: Failed to insert high sentiment message into the database: {e}")
+
+
+#####################################
+# Define Function to Retrieve High Sentiment Data from the Database
+#####################################
+
+def get_high_sentiment_data(db_path: pathlib.Path, sentiment_threshold: float = 0.8):
+    """
+    Retrieve all messages from the database with sentiment higher than the specified threshold.
+
+    Args:
+    - db_path (pathlib.Path): Path to the SQLite database file.
+    - sentiment_threshold (float): The minimum sentiment value to filter the messages.
+
+    Returns:
+    - list: A list of messages with sentiment above the threshold.
+    """
+    try:
+        with sqlite3.connect(str(db_path)) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                SELECT * FROM streamed_messages WHERE sentiment >= ?
+                """, (sentiment_threshold,)
+            )
+            rows = cursor.fetchall()
+            high_sentiment_messages = []
+
+            for row in rows:
+                message = {
+                    "id": row[0],
+                    "message": row[1],
+                    "author": row[2],
+                    "timestamp": row[3],
+                    "category": row[4],
+                    "sentiment": row[5],
+                    "keyword_mentioned": row[6],
+                    "message_length": row[7],
+                }
+                high_sentiment_messages.append(message)
+
+            logger.info(f"Successfully retrieved {len(high_sentiment_messages)} high sentiment messages.")
+            return high_sentiment_messages
+    except Exception as e:
+        logger.error(f"ERROR: Failed to retrieve high sentiment data from the database: {e}")
+        return []
+    
+#####################################
 # Define Function to Delete a Message from the Database
 #####################################
 
@@ -168,6 +248,8 @@ def main():
     }
 
     insert_message(test_message, TEST_DB_PATH)
+
+    insert_high_sentiment_message(test_message, TEST_DB_PATH)
 
     # Retrieve the ID of the inserted test message
     try:
