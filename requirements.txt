@@ -88,6 +88,13 @@ loguru
 # Environment variables management
 python-dotenv
 
+# Visualization
+matplotlib
+
+# Data Analysis and Manipulation - Dataframes etc
+pandas
+
+#
 # ======================================================
 # KAFKA MESSAGE BROKER INTEGRATION
 # ======================================================
