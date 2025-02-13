@@ -137,7 +137,7 @@ def insert_high_sentiment_message(message: dict, db_path: pathlib.Path) -> None:
     message_text = message.get('message')
 
     # Check if the sentiment is above the threshold
-    HIGH_SENTIMENT_THRESHOLD = 0.8  # Define the threshold for high sentiment
+    HIGH_SENTIMENT_THRESHOLD = 0.70  # Define the threshold for high sentiment
     if sentiment >= HIGH_SENTIMENT_THRESHOLD:
         try:
             with sqlite3.connect(str(db_path)) as conn:
@@ -158,7 +158,7 @@ def insert_high_sentiment_message(message: dict, db_path: pathlib.Path) -> None:
 # Define Function to Retrieve High Sentiment Data from the Database
 #####################################
 
-def get_high_sentiment_data(db_path: pathlib.Path, sentiment_threshold: float = 0.8):
+def get_high_sentiment_data(db_path: pathlib.Path, sentiment_threshold: float = 0.7):
     """
     Retrieve all messages from the database with sentiment higher than the specified threshold.
 

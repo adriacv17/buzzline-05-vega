@@ -49,7 +49,7 @@ HIGH_SENTIMENT_THRESHOLD = 0.75
 # Function to process a single message
 #####################################
 
-def process_message(message: dict) -> None:
+def process_message(message: dict, db_path: pathlib.Path) -> None:
     """
     Process and transform a single JSON message.
     Converts message fields to appropriate data types.
@@ -62,7 +62,7 @@ def process_message(message: dict) -> None:
         if sentiment >= HIGH_SENTIMENT_THRESHOLD:
             # Save high-sentiment messages separately
             logger.info(f"High sentiment message: {message}")
-            insert_high_sentiment_message(message)  # Insert high sentiment message to database
+            insert_high_sentiment_message(message, db_path)  # Insert high sentiment message to database
         
         processed_message = {
             "message": message.get("message"),
@@ -142,7 +142,7 @@ def consume_messages_from_kafka(
     try:
         # Consume messages and process them
         for message in consumer:
-            processed_message = process_message(message.value)
+            processed_message = process_message(message.value, sql_path)  # Pass db_path here
             if processed_message:
                 insert_message(processed_message, sql_path)
 
@@ -154,9 +154,10 @@ def consume_messages_from_kafka(
 # Visualize Sentiment Trends
 #####################################
 
+
 def visualize_sentiment(sqlite_path: pathlib.Path):
     """
-    Using Matplotlib visualize high sentiment trends over time.
+    Using Matplotlib visualize high sentiment trends over time, grouping by seconds.
     """
     # High sentiment data from the database
     high_sentiment_data = get_high_sentiment_data(sqlite_path)
@@ -171,15 +172,15 @@ def visualize_sentiment(sqlite_path: pathlib.Path):
     # Convert 'timestamp' to datetime
     df["timestamp"] = pd.to_datetime(df["timestamp"])
 
-    # Aggregate sentiment by day
-    df["date"] = df["timestamp"].dt.date
-    aggregated_data = df.groupby("date")["sentiment"].mean().reset_index()
+    # Group by seconds by truncating the timestamp to the nearest second
+    df["timestamp_seconds"] = df["timestamp"].dt.floor("S")  # Truncate to the nearest second
+    aggregated_data = df.groupby("timestamp_seconds")["sentiment"].mean().reset_index()
 
     # Plot the data
     plt.figure(figsize=(10, 8))
-    plt.plot(aggregated_data["date"], aggregated_data["sentiment"], marker="D", color="g", label="Avg Sentiment")
-    plt.title('High Sentiment Trend Over Time')
-    plt.xlabel('Date')
+    plt.plot(aggregated_data["timestamp_seconds"], aggregated_data["sentiment"], marker="D", color="g", label="Avg Sentiment")
+    plt.title('High Sentiment Trend Over Time (Grouped by Seconds)')
+    plt.xlabel('Timestamp (Seconds)')
     plt.ylabel('Average Sentiment')
     plt.xticks(rotation=45)
     plt.grid(True)
