@@ -1,9 +1,23 @@
-# buzzline-05-case
+# buzzline-05-vega
 
 Nearly every streaming analytics system stores processed data somewhere for further analysis, historical reference, or integration with BI tools.
 
 In this example project, we incorporate a relational data store. 
-We use SQLite, but the example could be altered to work with MySQL, PostgreSQL, or MongoDB.
+We will be using SQLite as our database storage. Where we will use a producer that will create messages with attributes such as message, author, timestamp, category, sentiment, keyword_mentioned, and message_length.
+
+A custom consumer will be processing the messages and storing them in a database. Then it will retrieve those messages and process them to complete a trend analysis on high-sentiment messages using the attributes of message, timestamp, and sentiment.
+
+
+## Consumer Overview
+
+1. What type of Consumer and What it Does
+  - This project uses a Kafka consumer that processes JSON messages and stores them in an SQLite database, then visualizes sentiment trends on high-sentiment messages over time.
+
+2. Insight Focus 
+  - The primary focus is to continuously consume and process messages from the Kafka topic, store the processed data in the SQLite database, then visualize high-sentiment trends over time.
+
+3. Calculations and Storage
+  - In this consumer, the script consumes messgaes in JSON format and stores the attributes message, author, timestamp, category, sentiment, keyword_mentioned, and message_length in the SQLite database. The process_message() function extracts and processes each message looking for high sentiment messages that meet a specific threshold. Then these processed messages are stored in the SQLite database.
 
 ## VS Code Extensions
 
@@ -83,12 +97,11 @@ python3 -m producers.producer_case
 
 The producer will still work if Kafka is not available.
 
-### Consumer (Terminal 4) - Two Options
+### Consumer (Terminal 4) 
 
 Start an associated consumer. 
-You have two options. 
-1. Start the consumer that reads from the live data file.
-2. OR Start the consumer that reads from the Kafka topic.
+. 
+Start the consumer that reads from the Kafka topic.
 
 In VS Code, open a NEW terminal in your root project folder. 
 Use the commands below to activate .venv, and start the consumer. 
@@ -96,17 +109,13 @@ Use the commands below to activate .venv, and start the consumer.
 Windows:
 ```shell
 .venv\Scripts\activate
-py -m consumers.kafka_consumer_case
-OR
-py -m consumers.file_consumer_case
+py -m consumers.consumer_vega
 ```
 
 Mac/Linux:
 ```zsh
 source .venv/bin/activate
-python3 -m consumers.kafka_consumer_case
-OR
-python3 -m consumers.file_consumer_case
+python3 -m consumers.consumer_vega
 ```
 
 ---
