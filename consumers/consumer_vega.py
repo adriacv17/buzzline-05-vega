@@ -1,5 +1,5 @@
 """
-kafka_consumer_vega.py
+consumer_vega.py
 
 Consume json messages from a live data file. 
 Insert the processed messages into a database.
